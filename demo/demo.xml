@@ -1,0 +1,763 @@
+<odoo>
+    <data>
+        <record id="unizik" model="quickgrades.school">
+            <field name="name">Nnamdi Azikiwe University</field>
+            <field name="code">0672</field>
+            <field name="city">Awka</field>
+            <field name="street">Nnamdi Azikiwe University, Awka</field>
+            <field name="street2"></field>
+            <field name="website">www.unizik.edu.ng</field>
+            <field name="email">info@unizik.edu.ng</field>
+            <field name="phone"></field>
+            <field name="company_id" ref="base.main_company"/>
+            <!--field name="logo">
+                iVBORw0KGgoAAAANSUhEUgAAALQAAAAuCAYAAACBMDMXAAAACXBIWXMAAC4jAAAuIwF4pT92AAAOU0lEQVR4nO2dC7QVVRnHdyKhBUiFRplFpJH2wBcSQnQ1gkDEaIGPCBRJeYSaGFIGPjIxSV1FYIIBEpEPHhJekeIRLWBJAQJW+AhEyAcUKKQoD4X+v7v3wL5zZ86Zc+653DuH81/rW3Nmz957Zi7/2fvb32Nz9IEDB0wJxvTr1/8UHV6bPHniW7X9LCXkj6Nr+wHqEL4n6Stij9DxfhF7f20/UAm5o6gILTIO0WGjyPhEHs0ZoT8kGSe5WH1dpn5eK+gDllDjKBpCi4Bf1OFuyV79biEybsuxi1O831+VPK1+eqqfZQV7yBJqHEVBaBGvvg5TJA2c9JXcG1GPax+TNAvJRyWfDlWnfL7aXCpSz6m5py+hkCgKQgs/lJzhnQ8UEaOI+xHJ+3Lo91jJTPV1uUj9+yQNunXrTv9nS9pJTpSw6t4sWVJePmdtDvcuIQ+kntAi26k6/DhUjPrwgwLdgr/RFN3nrWwjtcjcQYdfSb4k2SXZJDlK0lxyjK4/peMQEfvpAj1bCSGkmtAiGWR5wFg1I1/skIyVzJZsMHZh+C0J1o4mrg5/p4d0v3Yi9ZqoTkTWPjpMkmyU9JA8IeLuc9cauLI7Jct03lPX8lm4lpAFqSa0cLWxU3sYi4wl6HrJByVdjNWrw+8LObuIpFu8Mgh+j8j7pI5LjSU4+IBkusrPCNuqRVBUjImSlZLOIuv//Os636PDw6q3QMcF7veZKv9Xri9cQmakltAiFkS9NVT8hoRF3J9C5TNUn9FzrqSxK9st6REi80GofJ3aDNfPCV7xyZI7JNeFqv/S9dcrTGYfuraN0Vk//y75ueSbcXVLyA+pJbQw2FjrhI++EWSuAOY3ERS9OiDo4yp7Kcs9fmustaShf1/1M1ZtK0ZXEfR0Hc6V3CXCvpztoVVnvdrwcQ3U8SSd/9v1w7t8XYIqslPSXdLZWLVnq4T3mqf6kQ4ftecD52NpK2kkod/Zqr88oi4z1jZdW8FMod+XSU5y910sma5r72Z7l7qIVBJahMKSMCBUvFYkK8/S9EHJKElTyT+y3Uf97dG9GE3besX8zb5vrGcRdHXHR7P152GGsR8kxAo+sNMkU439OG6VQDRUJxaXbSTXSpaIgD1Ettf9zlSGDZ53P07yR8l2CQvU4brGGmOQ2rznNblNstwR+0ZjVavt7hm+Kxmia53UZlcO71QnkEpCG+v4+Eyo7K/ZGomg+0RQ6l1grE6cBHsiylg0BoRuJXlH8kzC/gC69n7XNgycQyxOm/uEEsHO12GWsaS/wCtn9sD68orkbLX5r3eNEfshY82GPw3dp5uxI3JLtXnFa3Oh64+P9o4c3qlOIK2E7h5RljT2IljQnZutopsJPhdxqZmuHa8PBPJ8XLIllyladd8UcXa6tmGgYvQPLCRem0Vqwyg9RccynS92l5ipTpC088ns2sxQXd5zmI6/0Lm/mP2k5FSfzK7N46qLOvWVpO9Tl5BWQp8TURY12kWhhTu2Fylbi5QrMtRltGoWc43FJQTCJJdPhN4uE21unBAmswdG23skvYzVdQGjMLryqzFtsL5cbyxBn/TKV2SwsrxgrBMqdUgrocNuatBGBP28CPrPuEa63lKHs9wpo+9UlXVQm/9E1MWicV9MV3j/gtEQdeP4xE9+CI1c2zBiVSeIrtFzlX6e7hXjxJmr8iZe2X5zaMZiccjsgX7sE3pzhmd721RdcKcCaSX0MRFlOFkmiIgdRdAqRFE5buyJrl4ACL5S127W8Q/G6pTo5pca62lsHO7HYZXuEZjnmLLPEaHqZxhZK8GRr7FrG0aVjyvienPXD+/EWuAnTjLhuNB5pmdNbZB8WgmNvfnDEeXoiwtF0AEiHNaJwJtYZqzd98yINpirJrvfjGpHRdQJ407v92pjzV7EkvwtycMba7VghohygdfP0pbrARkDvR1LxdQs7Y6IxIW0Ehq1ImzlCICJ7RkRGS8hxEc9aZqw3yRkHq2PZZZ3jrlstLGkTkrobxtLxnkR13je5zO0/ZSkQl92Kgjmtob6HekgOtKQVkI/ZqItHT5OLvA9+TiGicwT/UIR6VmRar5+DtBxHI6TTJ2oDiM5hH40hoTYhqOITlsWaswyo7xiHCcdJbfEtGERPJPn0/2SfnCpRVoJPU1yg+QLh+FeLxobdDROZN4RUwebLWSZLQJ1jBstdY3RF3Khqw+P6etK92G8EHEtIO0Urwx1CfNcV7WZG9EGBw73jV0sFxNSSWjnIGGEZro/rcDds1DDlEemynzdK2sMs4i0ToRiIYm3cI1+367jLJVXpHDpHJvvJZIfGavWdMvgJsezt1BtrqvounzOXtd+mIQUs2Eq2+TVR/3BXU7AE9cfdm1YePLRY7IbkEavXz5IJaGBiLZRpGb67S8hdBNzXLYFVRhM7bjA0Vmfk6xTv69nbhINEaZcJGKxR6AS4ahjdY4lBALjzWPBCfGuV90NGbpi9H3WWItMI/VB0BNxGujKg9X216H7HlCdi919fyOZoHNmEtYNzBR9VWdaPu+URqSW0IBYC2NtxfeJ3LwLnjeyRDBnBe+211h7L3Uhx3nmkH35JvWxulDPI+JgWTnf6a1fNocyVrAFL0sSvOT6eUB9kCHDB4K5DWKujDMLqhy78VVqg7WDUNaG7p5rojyYKotyTPnXL0nynHURqSa0DxGTf7jNJrPDADNeC++Uka1ghA4gQqB3v1jNPlARFuXYhoXr/OrcN+0oGkIngciMQ+YbXtENKkMfHa8PIrXOhBIO4YghNHEbxi6gPuEVo3Ojk16h632CGOcS0osjgtAiK95AFmRxMRfoqktVr61IXS1VoRpghnjXpNjtXBeQWkITiGSshYMoOywI6MIPkjoVUZ3dkLIFEBGCyWjduZDPmRQuHDRXK81BEEtibLY7x5fU384CPVqqkEpCi8zXGJsa5T8/3rKhuoYX7ZZAJ3aqxoUJu+7kkmATLxRFpIt0uD9DlUkiV3ibhXAfmPFuzte8pvZDjc1SDxJ631MZJslBQYpXjv2x1tgXynJJBVJHaMI9jbW54kn7mbF2XhwKuJTrSUYaO3UH0Wd9crwFbulcLB/84zdz941yeyfRywnVPDaHex6EyIfD5S5jM134u2BHJxOe2YaUrbNEzO059McIj5mTrJzH8nmm2kTqCG1sxjWjb9dA3xXJf6cD0svVGamymS42OtfMiw55Ptd8ESdrGlghIfIxIvMhTdG9b/QuLcAVbqy7G0/hiMP5XLWJNBKaGOYt/uJNv9mgkX03SJciYZT3wu17pbGpRrngxEI9aCYwrYuEu6vZDaoUiQJV9vEjG0X3WGhs7mCJ0HUYuHVbisBN/R1G9Xu3060Xu6Iu7pgkJNRHVFJsQeCmc3R8Mqub6ByX++CIeujkq0XK8aFy3OILVB7EPjObbHUeyiiw2c55XntisJnhyEMkYClw3lxL3Ilz3Qeq2kids5HPRcSG5PXCtYA0EnqJsToiAUCD/Asi9V9EaoKJsHyQyPp+Y93GTar0Eo+NhXrQCJBFPdDYmYP3wD3O3h/h3ML2Jjo9q8zY/fICECL7XNzN3AfhfxREBRKxh3682NjkBsyZ7MdHbiJeViILOxm7wxMRhKlaGKaR0ATgkB7FDqMEJJFjh4mKUYRoNzZkCRJmCeph9IrK3I5DjcQMa7Qj5YoZ5HYRbborJtyURIW78+yWxWguC1gWvFPJIHfnm3R/nqU3J26UDpIXntJ5aVFY09AovEFEJvOZeOLWTgJsMpVHMBaPjDS9THJE7ryUAPNEhnAg0HaRIviYWJxiEZkdqkPiar6ExjISNZLHAYvPG6EyAp7ytn/XNaSO0A7YdckpvMorI+Lsz8ZO1wEYtSEQ0XX1EvSLTr40z2diI5dw6pSve7KYxQEUNuNVxzOJTpzYs6iPq5J6og+wubFx2kWDVBJaozR63dUaqYkZZqWPrjwNy4fKylw1yPOOyt5WGfpqWWRnlVHuovbywdIsZjv0+DcjNpDZLWLluxDlI87Jfq178beCxKgZLBhR14om+D+VhA4g8kGgOBLt9CLoSHsqS9DlgkI8Vwz4W8ft7pTv/7jF3iBxG+EE+YQkQbARzbtuY8ZHjJ3dmLWY4bB49M7z/nUOqSZ0DAJXr595wuJmjMn+31HkFH+cIxgFq+ynJ5LxbxC1z0gS4DLvmOH6d4xdazR0m66zZx0qTptgw0eV53nruoliJDS5gOQFVrh7pW6Q9k+2NBskts7QjtF8lOqP1MieKLMkR/ChNRCBThCZ/M1kyLIJf2g8SxL7Oe96ufr8bExSLebNNS5NC4sQTqNeod1LG0a0Sy2KjtBOZ0av7uv+/xUSXkn1Z2ekTISGVFdIetKuBkgd7KEHyXxzWPuIuuQiVtpbzo3kjUL1GHGJ32ATxyGh+mTEf83YTWhAYOsOb8ge3hMwUH9ydUjVCRQdoYGLllstYvIPjS2axc+ozK0OghELXTNXQrdynsAwXiUly+3fgY17hI6LCO/UEV2W4KKwDs1s0lPXm7pd/8krJPG2kgNG17ayq6ix+0DjFBlLfqF+s9kOsS2oF4Fjhe1+WXwSckt0HqRnW162Jt6h3/WIrkNccq+fCJEaFCWhPTDNs1cFlgvMdriMCejxNzMM4JdtzeNe42PKIeI17jfxJnjmNjq3N54+dNwxoTZsW8Ysg+ODd+C/qMMzGrUAJDgJHRyz4SjVxy7NR4k60jvYvoCIO5dEe68LXMJShE5/k+sbc2WwsTszyGjVwy3fqgAxJ4cNRU1ojdT8w/jTe8ETSPWPjdXgkYR1nxdJcLQQM4EZb5XblGZSqN7Lrh4qEma2tU7vreKAcTHLQ1WfGYiZhVliPfeKqDtG9ea4etjcl7s9PPC++nb6fsb+LwKoHTUW21IT+D/wbOblX2YQTQAAAABJRU5ErkJggg==
+            </field-->
+            <field name="currency_id" ref="base.NGN"/>
+        </record>
+        <record id="base.lang_en" model="res.lang">
+            <field name="date_format">%d-%b-%Y</field>
+        </record>
+
+        <record id="base.NGN" model="res.currency">
+            <field name="active" eval="True"/>
+            <field name="position">before</field>
+        </record>
+
+        <record id="first_semester" model="quickgrades.semester">
+            <field name="sequence">1</field>
+            <field name='code'>1st</field>
+            <field name="name">First Semester</field>
+        </record>
+        <record id="second_semester" model="quickgrades.semester">
+            <field name="sequence">2</field>
+            <field name='code'>2nd</field>
+            <field name="name">Second Semester</field>
+        </record>
+
+        <!-- Diploma-->
+        <record id="bsc" model="quickgrades.diploma">
+            <field name="code">B.Sc</field>
+            <field name="name">Bachelor of Science</field>
+        </record>
+        <record id="bagric" model="quickgrades.diploma">
+            <field name="code">B.Agric</field>
+            <field name="name">Bachelor of Agriculture</field>
+        </record>
+        <record id="ba" model="quickgrades.diploma">
+            <field name="code">BA</field>
+            <field name="name">Bachelor of Arts</field>
+        </record>
+        <record id="be" model="quickgrades.diploma">
+            <field name="code">B.Ed</field>
+            <field name="name">Bachelor of Education</field>
+        </record>
+        <record id="bse" model="quickgrades.diploma">
+            <field name="code">B.Sc(Ed)</field>
+            <field name="name">Bachelor of Science(Education)</field>
+        </record>
+        <record id="beng" model="quickgrades.diploma">
+            <field name="code">B.Eng</field>
+            <field name="name">Bachelor of Engineer</field>
+        </record>
+         <record id="mbbs" model="quickgrades.diploma">
+            <field name="code">MBBS</field>
+            <field name="name">Bachelor of Medicine, Bachelor of Surgery</field>
+        </record>
+        <record id="bpharm" model="quickgrades.diploma">
+            <field name="code">B.Pharm</field>
+            <field name="name">Bachelor of Pharmacy</field>
+        </record>
+        <record id="llb" model="quickgrades.diploma">
+            <field name="code">LLB</field>
+            <field name="name">Bachelor of Laws</field>
+        </record>
+        <record id="meng" model="quickgrades.diploma">
+            <field name="code">M.Eng</field>
+            <field name="name">Master of Engineer</field>
+        </record>
+        <record id="ma" model="quickgrades.diploma">
+            <field name="code">MA</field>
+            <field name="name">Master of Arts</field>
+        </record>
+        <record id="msc" model="quickgrades.diploma">
+            <field name="code">M.Sc</field>
+            <field name="name">Master of Science</field>
+        </record>
+        <record id="phd" model="quickgrades.diploma">
+            <field name="code">Phd</field>
+            <field name="name">Doctor of Philosophy</field>
+        </record>
+
+        <!-- Honour Scheme -->
+        <record id="first" model="quickgrades.honour">
+            <field name="name">First Class</field>
+            <field name="description">First Class Honours</field>
+            <field name="upper_bound">5.0</field>
+            <field name="lower_bound">4.50</field>
+        </record>
+        <record id="second_upper" model="quickgrades.honour">
+            <field name="name">Second Class Upper Division</field>
+            <field name="description">Second Class Upper Honours</field>
+            <field name="upper_bound">4.49</field>
+            <field name="lower_bound">3.50</field>
+        </record>
+        <record id="second_lower" model="quickgrades.honour">
+            <field name="name">Second Class Lower Division</field>
+            <field name="description">Second Class Lower Honours</field>
+            <field name="upper_bound">3.49</field>
+            <field name="lower_bound">2.40</field>
+        </record>
+        <record id="third" model="quickgrades.honour">
+            <field name="name">Third Class</field>
+            <field name="description">Third Class</field>
+            <field name="upper_bound">2.39</field>
+            <field name="lower_bound">1.50</field>
+        </record>
+        <record id="pass" model="quickgrades.honour">
+            <field name="name">Pass</field>
+            <field name="description">Fail</field>
+            <field name="upper_bound">1.49</field>
+            <field name="lower_bound">1.00</field>
+        </record>
+
+
+        <!--  Faculties  -->
+         <record id="agriculture" model="quickgrades.faculty">
+            <field name="name">Faculty of Agiculture</field>
+            <field name="code">Agriculture</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="arts" model="quickgrades.faculty">
+            <field name="name">Faculty of Arts</field>
+            <field name="code">Arts</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="basic" model="quickgrades.faculty">
+            <field name="name">Faculty of Basic Medical Sciences</field>
+            <field name="code">Basic Medical Sciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="bioscience" model="quickgrades.faculty">
+            <field name="name">Faculty of Biosciences</field>
+            <field name="code">Biosciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="education" model="quickgrades.faculty">
+            <field name="name">Faculty of Education</field>
+            <field name="code">Education</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="engineering" model="quickgrades.faculty">
+            <field name="name">Faculty of Engineering</field>
+            <field name="code">Engineering</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="environmental" model="quickgrades.faculty">
+            <field name="name">Faculty of Environmental Sciences</field>
+            <field name="code">Environmental Sciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="health" model="quickgrades.faculty">
+            <field name="name">Faculty of Health Sciences and Technology</field>
+            <field name="code">Health Science &amp; Technology</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="law" model="quickgrades.faculty">
+            <field name="name">Faculty of Law</field>
+            <field name="code">Law</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="management" model="quickgrades.faculty">
+            <field name="name">Faculty of Management Sciences</field>
+            <field name="code">Management Science</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="medicine" model="quickgrades.faculty">
+            <field name="name">Faculty of Medicine</field>
+            <field name="code">Medicine</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="pharm" model="quickgrades.faculty">
+            <field name="name">Faculty of Pharmaceutical Sciences</field>
+            <field name="code">Pharmaceutical Sciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="physical" model="quickgrades.faculty">
+            <field name="name">Faculty of Physical Sciences</field>
+            <field name="code">Faculty of Physical Sciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+         <record id="social" model="quickgrades.faculty">
+            <field name="name">Faculty of Social Sciences</field>
+            <field name="code">Faculty of Social Sciences</field>
+            <field name="school_id" ref="unizik"/>
+        </record>
+
+        
+
+
+        <!-- Departments for Engineering -->
+        <record id="eee_dept" model="quickgrades.department">
+            <field name="name">Electrical Engineering</field>
+            <field name="code">ELE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="mec_dept" model="quickgrades.department">
+            <field name="name">Mechanical Engineering</field>
+            <field name="code">MEC</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="che_dept" model="quickgrades.department">
+            <field name="name">Chemical Engineering</field>
+            <field name="code">CHE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="cve_dept" model="quickgrades.department">
+            <field name="name">Civil Engineering</field>
+            <field name="code">CVE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="mme_dept" model="quickgrades.department">
+            <field name="name">Department of Metallurgical &amp; Materials Engineering</field>
+            <field name="code">MME</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="ece_dept" model="quickgrades.department">
+            <field name="name">Electronic and Computer Engineering</field>
+            <field name="code">ECE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="ipe_dept" model="quickgrades.department">
+            <field name="name">Industrial/Production Engineering</field>
+            <field name="code">IPE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="cve_dept" model="quickgrades.department">
+            <field name="name">Civil Engineering</field>
+            <field name="code">CVE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+        <record id="pte_dept" model="quickgrades.department">
+            <field name="name">Polymer and Textile Engineering</field>
+            <field name="code">PTE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+         <record id="abe_dept" model="quickgrades.department">
+            <field name="name">Agriculture and Bio-resources Engineering</field>
+            <field name="code">ABE</field>
+            <field name="faculty_id" ref="engineering"/>
+            <field eval="[(4, ref('beng')),(4, ref('meng'))]" name="diploma_ids"/>
+        </record>
+
+
+        <!-- Departments for Agriculture -->
+        <record id="aee_dept" model="quickgrades.department">
+            <field name="name">Agricultural Economics and Extension</field>
+            <field name="code">AEE</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="ast_dept" model="quickgrades.department">
+            <field name="name">Animal Science and Technology</field>
+            <field name="code">AST</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="csh_dept" model="quickgrades.department">
+            <field name="name">Crop Science and Horticulture</field>
+            <field name="code">CSH</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="fia_dept" model="quickgrades.department">
+            <field name="name">Fisheries and Aquaculture</field>
+            <field name="code">FIA</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="fst_dept" model="quickgrades.department">
+            <field name="name">Food Science and Technology</field>
+            <field name="code">FST</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="fwm_dept" model="quickgrades.department">
+            <field name="name">Forestry and Wildlife Management</field>
+            <field name="code">FWM</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="ssl_dept" model="quickgrades.department">
+            <field name="name">Soil Science and Land Resources Management</field>
+            <field name="code">SSL</field>
+            <field name="faculty_id" ref="agriculture"/>
+            <field eval="[(4, ref('bsc')),(4, ref('msc'))]" name="diploma_ids"/>
+        </record>
+
+        <!-- Faculty of Arts -->
+        <record id="enl_dept" model="quickgrades.department">
+            <field name="name">English Language and Literature</field>
+            <field name="code">ENL</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+        <record id="his_dept" model="quickgrades.department">
+            <field name="name">History and International Studies</field>
+            <field name="code">HIS</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="his_dept" model="quickgrades.department">
+            <field name="name">History and International Studies</field>
+            <field name="code">HIS</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="his_dept" model="quickgrades.department">
+            <field name="name">History and International Studies</field>
+            <field name="code">HIS</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="iaa_dept" model="quickgrades.department">
+            <field name="name">Igbo, African and Asian Studies</field>
+            <field name="code">IAA</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+        <record id="lig_dept" model="quickgrades.department">
+            <field name="name">Linguistics</field>
+            <field name="code">LIG</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+        <record id="mel_dept" model="quickgrades.department">
+            <field name="name">Modern European Languages</field>
+            <field name="code">MEL</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+        <record id="mus_dept" model="quickgrades.department">
+            <field name="name">Music</field>
+            <field name="code">MUS</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="phy_dept" model="quickgrades.department">
+            <field name="name">Philosophy</field>
+            <field name="code">PHY</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="rhr_dept" model="quickgrades.department">
+            <field name="name">Religion and Human Relations</field>
+            <field name="code">RHR</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+        <record id="tfs_dept" model="quickgrades.department">
+            <field name="name">Theatre and Film Studies</field>
+            <field name="code">TFS</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+         <record id="chn_dept" model="quickgrades.department">
+            <field name="name">Chinese</field>
+            <field name="code">CHN</field>
+            <field name="faculty_id" ref="arts"/>
+            <field eval="[(4, ref('ba'))]" name="diploma_ids"/>
+        </record>
+
+         <!-- Faculty of Basic Medical Sciences -->
+        <record id="ana_dept" model="quickgrades.department">
+            <field name="name">Anatomy</field>
+            <field name="code">ANA</field>
+            <field name="faculty_id" ref="basic"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="hpy_dept" model="quickgrades.department">
+            <field name="name">Human Physiology</field>
+            <field name="code">HPY</field>
+            <field name="faculty_id" ref="basic"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+
+        <!-- Faculty of Agriculture -->
+         <record id="amb_dept" model="quickgrades.department">
+            <field name="name">Applied Microbiology &amp; Brewing</field>
+            <field name="code">AMB</field>
+            <field name="faculty_id" ref="bioscience"/>
+            <field eval="[(4, ref('bagric'))]" name="diploma_ids"/>
+        </record>
+        <record id="bio_dept" model="quickgrades.department">
+            <field name="name">Applied Biochemistry</field>
+            <field name="code">BIO</field>
+            <field name="faculty_id" ref="bioscience"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="pae_dept" model="quickgrades.department">
+            <field name="name">Parasitology and Entomology</field>
+            <field name="code">PAE</field>
+            <field name="faculty_id" ref="bioscience"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="zoo_dept" model="quickgrades.department">
+            <field name="name">Zoology</field>
+            <field name="code">ZOO</field>
+            <field name="faculty_id" ref="bioscience"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="bot_dept" model="quickgrades.department">
+            <field name="name">Botany</field>
+            <field name="code">BOT</field>
+            <field name="faculty_id" ref="bioscience"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        
+        <!--Faculty of Education-->
+        <record id="ade_dept" model="quickgrades.department">
+            <field name="name">Adult Education</field>
+            <field name="code">ADE</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="hhe_dept" model="quickgrades.department">
+            <field name="name">Human Kinetics and Health Education</field>
+            <field name="code">HHE</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="gac_dept" model="quickgrades.department">
+            <field name="name">Guidance and Counselling</field>
+            <field name="code">GAC</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="sce_dept" model="quickgrades.department">
+            <field name="name">Science Education</field>
+            <field name="code">SCE</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="emp_dept" model="quickgrades.department">
+            <field name="name">Education Management and Policy</field>
+            <field name="code">EMP</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="ecp_dept" model="quickgrades.department">
+            <field name="name">Early Childhood and Primary Education</field>
+            <field name="code">ECP</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="lis_dept" model="quickgrades.department">
+            <field name="name">Library and Information Science</field>
+            <field name="code">LIS</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+        <record id="edf_dept" model="quickgrades.department">
+            <field name="name">Education Foundations</field>
+            <field name="code">EDF</field>
+            <field name="faculty_id" ref="education"/>
+            <field eval="[(4, ref('be'))]" name="diploma_ids"/>
+        </record>
+
+        <!--Faculty of Law-->
+        <record id="cpl_dept" model="quickgrades.department">
+            <field name="name">Commercial and Property Law</field>
+            <field name="code">CPL</field>
+            <field name="faculty_id" ref="law"/>
+            <field eval="[(4, ref('llb'))]" name="diploma_ids"/>
+        </record>
+        <record id="ilj_dept" model="quickgrades.department">
+            <field name="name">International Law and Jurisprudence</field>
+            <field name="code">ILJ</field>
+            <field name="faculty_id" ref="law"/>
+            <field eval="[(4, ref('llb'))]" name="diploma_ids"/>
+        </record>
+        <record id="ppl_dept" model="quickgrades.department">
+            <field name="name">Public and Private Law</field>
+            <field name="code">PPL</field>
+            <field name="faculty_id" ref="law"/>
+            <field eval="[(4, ref('llb'))]" name="diploma_ids"/>
+        </record>
+       
+        <!--Faculty of Environmental Sciences -->
+        <record id="architecture_dept" model="quickgrades.department">
+            <field name="name">Architecture</field>
+            <field name="code">ARC</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="bld_dept" model="quickgrades.department">
+            <field name="name">Building</field>
+            <field name="code">BLD</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="enm_dept" model="quickgrades.department">
+            <field name="name">Environmental Management</field>
+            <field name="code">ENM</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="faa_dept" model="quickgrades.department">
+            <field name="name">Fine and Applied Arts</field>
+            <field name="code">FAA</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="esm_dept" model="quickgrades.department">
+            <field name="name">Estate Management</field>
+            <field name="code">ESM</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="gam_dept" model="quickgrades.department">
+            <field name="name">Geography and Meteorology</field>
+            <field name="code">GAM</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="qus_dept" model="quickgrades.department">
+            <field name="name">Quantity Surveying</field>
+            <field name="code">QUS</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="sug_dept" model="quickgrades.department">
+            <field name="name">Surveying and Geo-informatics</field>
+            <field name="code">SUG</field>
+            <field name="faculty_id" ref="environmental"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+
+        <!--Faculty of Health Sciences and Technology -->
+        <record id="mls_dept" model="quickgrades.department">
+            <field name="name">Medical Laboratory Science</field>
+            <field name="code">MLS</field>
+            <field name="faculty_id" ref="health"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="mer_dept" model="quickgrades.department">
+            <field name="name">Medical Rehabilitation</field>
+            <field name="code">MER</field>
+            <field name="faculty_id" ref="health"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="nus_dept" model="quickgrades.department">
+            <field name="name">Nursing Science</field>
+            <field name="code">NUS</field>
+            <field name="faculty_id" ref="health"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="rrs_dept" model="quickgrades.department">
+            <field name="name">Radiography and Radiological Science</field>
+            <field name="code">RRS</field>
+            <field name="faculty_id" ref="health"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+
+        <!--Faculty of Management Sciences -->
+        <record id="acc_dept" model="quickgrades.department">
+            <field name="name">Accountancy</field>
+            <field name="code">ACC</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="bfn_dept" model="quickgrades.department">
+            <field name="name">Banking and Finance</field>
+            <field name="code">BFN</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="bus_dept" model="quickgrades.department">
+            <field name="name">Business Administration</field>
+            <field name="code">BUS</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="cem_dept" model="quickgrades.department">
+            <field name="name">Cooperative Economics and Management</field>
+            <field name="code">CEM</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="mrt_dept" model="quickgrades.department">
+            <field name="name">Marketing</field>
+            <field name="code">MRT</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="pub_dept" model="quickgrades.department">
+            <field name="name">Public Administration</field>
+            <field name="code">PUB</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+        <record id="ens_dept" model="quickgrades.department">
+            <field name="name">Entrepreneurial Studies</field>
+            <field name="code">ENS</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('bsc'))]" name="diploma_ids"/>
+        </record>
+
+        <!--Faculty of Medicine -->
+        <record id="med_dept" model="quickgrades.department">
+            <field name="name">Medicine/Surgery</field>
+            <field name="code">MED</field>
+            <field name="faculty_id" ref="management"/>
+            <field eval="[(4, ref('mbbs'))]" name="diploma_ids"/>
+        </record>
+
+
+	
+
+        <!-- Sessions -->
+        <record id="2018_2019" model="academic.session">
+            <field name="sequence">8</field>
+            <field name="code">2018/2019</field>
+            <field name="name">2018/2019</field>
+        </record>
+        <record id="2017_2018" model="academic.session">
+            <field name="sequence">7</field>
+            <field name="code">2017/2018</field>
+            <field name="name">2017/2018</field>
+        </record>
+        <record id="2016_2017" model="academic.session">
+            <field name="sequence">5</field>
+            <field name="code">2016/2017</field>
+            <field name="name">2016/2017</field>
+        </record>
+        <record id="2015_2016" model="academic.session">
+            <field name="sequence">4</field>
+            <field name="code">2015/2016</field>
+            <field name="name">2015/2016</field>
+        </record>
+        <record id="2014_2015" model="academic.session">
+            <field name="sequence">3</field>
+            <field name="code">2014/2015</field>
+            <field name="name">2014/2015</field>
+        </record>
+        <record id="2013_2014" model="academic.session">
+            <field name="sequence">2</field>
+            <field name="code">2013/2014</field>
+            <field name="name">2013/2014</field>
+        </record>
+        <record id="2012_2013" model="academic.session">
+            <field name="sequence">1</field>
+            <field name="code">2012/2013</field>
+            <field name="name">2012/2013</field>
+        </record>
+
+        <!--Academic Grading Scheme-->
+        <record id="default_grading_system" model="quickgrades.grading.scheme">
+            <field name="name">CGPA</field>
+            <field name="description">5 Points CGPA Scheme</field>
+        </record>
+        <record id="default_honour_system" model="quickgrades.honour.scheme">
+            <field name="name">Default University Scheme</field>
+            <field name="description">NUC Approved Polytechnic Scheme</field>
+            <field name="honour_ids"
+                   eval="[(4, ref('first')),(4, ref('second_upper')),(4, ref('second_lower')),(4, ref('third')),(4, ref('pass'))]"/>
+        </record>
+        <record id="unizik" model="quickgrades.school">
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+            <field name="honour_scheme_id" ref="default_honour_system"/>
+            <field name="country_id" ref="base.ng"/>
+        </record>
+
+
+        <!-- Grades -->
+        <record id="a" model="quickgrades.grade">
+            <field name="name">A</field>
+            <field name="point">5.00</field>
+            <field name="min_grade">70</field>
+            <field name="max_grade">100</field>
+            <field name="is_pass_mark">True</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+        <record id="b" model="quickgrades.grade">
+            <field name="name">B</field>
+            <field name="point">4.00</field>
+            <field name="min_grade">60</field>
+            <field name="max_grade">69</field>
+            <field name="is_pass_mark">True</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+        <record id="c" model="quickgrades.grade">
+            <field name="name">C</field>
+            <field name="point">3.00</field>
+            <field name="min_grade">50</field>
+            <field name="max_grade">59</field>
+            <field name="is_pass_mark">True</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+        <record id="d" model="quickgrades.grade">
+            <field name="name">D</field>
+            <field name="point">2.00</field>
+            <field name="min_grade">45</field>
+            <field name="max_grade">49</field>
+            <field name="is_pass_mark">True</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+        <record id="e" model="quickgrades.grade">
+            <field name="name">E</field>
+            <field name="point">1.00</field>
+            <field name="min_grade">40</field>
+            <field name="max_grade">44</field>
+            <field name="is_pass_mark">True</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+        <record id="f" model="quickgrades.grade">
+            <field name="name">F</field>
+            <field name="point">0.00</field>
+            <field name="min_grade">0</field>
+            <field name="max_grade">39</field>
+            <field name="is_pass_mark">False</field>
+            <field name="grading_scheme_id" ref="default_grading_system"/>
+        </record>
+
+
+        <!-- Academic Programme-->
+        <record id="beng_che" model="quickgrades.programme">
+            <field name="department_id" ref="che_dept"/>
+            <field name="diploma_id" ref="beng"/>
+            <field name="faculty_id" ref="engineering"/>
+        </record>
+        <record id="beng_eee" model="quickgrades.programme">
+            <field name="department_id" ref="eee_dept"/>
+            <field name="diploma_id" ref="beng"/>
+            <field name="faculty_id" ref="engineering"/>
+        </record>
+        <record id="bagric_amb" model="quickgrades.programme">
+            <field name="department_id" ref="amb_dept"/>
+            <field name="diploma_id" ref="bagric"/>
+            <field name="faculty_id" ref="agriculture"/>
+        </record>
+
+
+
+
+        <!-- Student Informations -->
+        <record id="okonkwo_ukamaka_christina" model="quickgrades.student">
+            <field name="name">Okonkwo Ukamaka Christiana</field>
+            <field name="matriculation_number">NAU/2001/484557</field>
+            <field name="application_number">7858484557</field>
+            <field name="programme_id" ref="bagric_amb"/>
+            <field name="school_id" ref="unizik"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,171 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="unizik_menu_manager_top" name="QGrades"/>
+
+        <menuitem
+                id="board.menu_board_my_dash"
+                parent="unizik_menu_manager_top"
+                action="board.open_board_my_dash_action"
+                sequence="-1"/>
+
+        <!-- menu categories -->
+        <menuitem name="General information"
+                  id="unizik_menu_general"
+                  sequence='1'
+                  parent="unizik_menu_manager_top"/>
+
+        <menuitem name="Students Information"
+                  id="unizik_menu_students"
+                  sequence='2'
+                  action="unizik_students_action_window"
+                  parent="unizik_menu_manager_top"/>
+
+        <menuitem name="Results Management"
+                  id="unizik_menu_grading"
+                  sequence='4'
+                  parent="unizik_menu_manager_top"/>
+
+        <!--menuitem name="Reporting"
+                  id="unizik_menu_reporting"
+                  sequence='5'
+                  groups="group_admin,group_sysadmin,group_record,group_exam,group_bursary,group_rector"
+                  parent="unizik_menu_manager_top"/-->
+
+        <menuitem name="Master Data"
+                  id="unizik_reference_data"
+                  sequence='8'
+                  parent="unizik_menu_manager_top"/>
+
+        <menuitem name="ETL"
+                  id="unizik_etl"
+                  sequence='9'
+                  parent="unizik_menu_manager_top"/>
+
+        <!-- General -->
+
+        <menuitem name="Students"
+                  id="unizik_menu_all_students_1"
+                  sequence='1'
+                  action="unizik_students_action_window"
+                  parent="unizik_menu_general"/>
+
+
+        <menuitem name="Faculties"
+                  id="unizik_faculties"
+                  action="unizik_faculties_action_window"
+                  parent="unizik_menu_general"/>
+
+        <menuitem name="Departments"
+                  id="unizik_departments"
+                  action="unizik_departments_action_window"
+                  parent="unizik_menu_general"/>
+
+        <menuitem name="Courses"
+                  id="unizik_courses"
+                  action="unizik_courses_action_window"
+                  parent="unizik_menu_general"/>
+
+        <menuitem name="Course Entries"
+                  id="unizik_courses_entries"
+                  action="unizik_courses_entry_action_window"
+                  parent="unizik_menu_general"/>
+
+        <menuitem name="Programmes"
+                  id="unizik_academic_programme"
+                  action="academic_academic_programmes_action_window"
+                  parent="unizik_menu_general"/>
+
+
+        <!-- Students Information -->
+        <menuitem name="Students"
+                  id="unizik_menu_all_students"
+                  sequence='1'
+                  action="unizik_students_action_window"
+                  parent="unizik_menu_students"/>
+
+
+        <!-- Result Management  -->
+        <menuitem name="Result Entries"
+                  id="unizik_menu_academic_result_entries"
+                  sequence='4'
+                  action="unizik_student_result_entry_action_window"
+                  parent="unizik_menu_grading"/>
+
+        <menuitem name="Results"
+                  id="unizik_menu_student_results"
+                  sequence='1'
+                  action="unizik_student_results_action_window"
+                  parent="unizik_menu_grading"/>
+
+
+        <!-- ETL  -->
+        <menuitem name="Students Data"
+                  id="unizik_menu_student_academic_legacy_student"
+                  sequence='1'
+                  action="unizik_academic_legacy_student_action_window"
+                  parent="unizik_etl"/>
+
+        <menuitem name="Students Result"
+                  id="unizik_menu_student_academic_legacy_result_student"
+                  sequence='2'
+                  action="unizik_academic_legacy_student_result_action_window"
+                  parent="unizik_etl"/>
+
+
+        <menuitem name="Courses"
+                  id="unizik_menu_student_academic_school_course"
+                  sequence='3'
+                  action="unizik_academic_school_course_action_window"
+                  parent="unizik_etl"/>
+
+
+        <!-- Master Data -->
+        <menuitem name="Grades"
+                  id="unizik_grades"
+                  action="unizik_academic_grades_action_window"
+                  parent="unizik_reference_data"/>
+
+        <!--menuitem name="Schools"
+                  id="unizik_polytechnics"
+                  action="unizik_academic_polyechnic_action_window"
+                  parent="unizik_reference_data"/-->
+
+        <menuitem name="Semesters"
+                  id="unizik_academic_semesters"
+                  action="academic_semesters_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Sessions"
+                  id="unizik_academic_sessions"
+                  action="academic_academic_sessions_action_window"
+                  parent="unizik_reference_data"/>
+
+
+        <menuitem name="Levels"
+                  id="unizik_academic_levels"
+                  action="academic_academic_levels_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Grading Schemes"
+                  id="unizik_grading_scheme"
+                  action="unizik_academic_grading_schemes_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Degrees"
+                  id="unizik_academic_diploma"
+                  action="unizik_academic_diplomas_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Honours"
+                  id="unizik_academic_honour"
+                  action="unizik_academic_honours_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Honour Schemes"
+                  id="unizik_academic_honour_scheme"
+                  action="unizik_academic_honours_schemes_action_window"
+                  parent="unizik_reference_data"/>
+
+    </data>
+</odoo>

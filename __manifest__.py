@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "Quick Grades",
+    'summary': """ Automated University Examination Grading Application """,
+    'description': """Automated University Examination Grading Application""",
+    'author': "Benny Katchy",
+    'website': "http://www.quempssystems.com",
+    'category': 'Uncategorized',
+    'version': '1.0',
+    'depends': ['base', 'board', 'mail','portal'],
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/faculties_view.xml',
+        'views/students_view.xml',
+        'views/departments_view.xml',
+        'views/courses_view.xml',
+        'views/courses_entry_view.xml',
+        'views/grades_view.xml',
+        'views/grading_schemes_view.xml',
+        'views/academic_diplomas_view.xml',
+        'views/honours_view.xml',
+        'views/honour_schemes_view.xml',
+        'views/semesters_view.xml',
+        'views/academic_levels_view.xml',
+        'views/academic_programmes_view.xml',
+        'views/student_results_view.xml',
+        "views/student_result_entry_view.xml",
+        'views/school_courses_view.xml',
+        'views/student_legacy_view.xml',
+        'views/student_legacy_result_view.xml',
+        'views/academic_years_view.xml',
+        'views/menu.xml'
+    ],
+    'demo': [
+        'demo/demo.xml',
+    ],
+}
