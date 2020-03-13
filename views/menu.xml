@@ -50,6 +50,15 @@
                   action="unizik_students_action_window"
                   parent="unizik_menu_general"/>
 
+        <menuitem name="Registrations"
+                  id="unizik_menu_student_registrations_2"
+                  sequence='3'
+                  action="unizik_student_registrations_action_window"
+                  parent="unizik_menu_students"/>
+
+
+
+
 
         <menuitem name="Faculties"
                   id="unizik_faculties"
@@ -155,6 +164,11 @@
         <menuitem name="Degrees"
                   id="unizik_academic_diploma"
                   action="unizik_academic_diplomas_action_window"
+                  parent="unizik_reference_data"/>
+
+        <menuitem name="Degree Types"
+                  id="unizik_academic_diploma_type"
+                  action="unizik_academic_diploma_types_action_window"
                   parent="unizik_reference_data"/>
 
         <menuitem name="Honours"

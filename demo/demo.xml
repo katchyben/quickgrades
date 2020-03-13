@@ -35,62 +35,89 @@
             <field name="name">Second Semester</field>
         </record>
 
+        <!-- Diploma Type-->
+        <record id="first" model="quickgrades.diploma.type">
+            <field name="code">First</field>
+            <field name="name">First Degree</field>
+        </record>
+        <record id="second" model="quickgrades.diploma.type">
+            <field name="code">Second</field>
+            <field name="name">Postgraduate Degree</field>
+        </record>
+        <record id="doctorate" model="quickgrades.diploma.type">
+            <field name="code">Doctorate</field>
+            <field name="name">Doctorate Degree</field>
+        </record>
+
         <!-- Diploma-->
         <record id="bsc" model="quickgrades.diploma">
             <field name="code">B.Sc</field>
             <field name="name">Bachelor of Science</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="bagric" model="quickgrades.diploma">
             <field name="code">B.Agric</field>
             <field name="name">Bachelor of Agriculture</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="ba" model="quickgrades.diploma">
             <field name="code">BA</field>
             <field name="name">Bachelor of Arts</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="be" model="quickgrades.diploma">
             <field name="code">B.Ed</field>
             <field name="name">Bachelor of Education</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="bse" model="quickgrades.diploma">
             <field name="code">B.Sc(Ed)</field>
             <field name="name">Bachelor of Science(Education)</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="beng" model="quickgrades.diploma">
             <field name="code">B.Eng</field>
             <field name="name">Bachelor of Engineer</field>
+            <field name="type_id" ref="first"/>
         </record>
          <record id="mbbs" model="quickgrades.diploma">
             <field name="code">MBBS</field>
             <field name="name">Bachelor of Medicine, Bachelor of Surgery</field>
-        </record>
+             <field name="type_id" ref="first"/>
+         </record>
         <record id="bpharm" model="quickgrades.diploma">
             <field name="code">B.Pharm</field>
             <field name="name">Bachelor of Pharmacy</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="llb" model="quickgrades.diploma">
             <field name="code">LLB</field>
             <field name="name">Bachelor of Laws</field>
+            <field name="type_id" ref="first"/>
         </record>
         <record id="meng" model="quickgrades.diploma">
             <field name="code">M.Eng</field>
             <field name="name">Master of Engineer</field>
+            <field name="type_id" ref="second"/>
         </record>
         <record id="ma" model="quickgrades.diploma">
             <field name="code">MA</field>
             <field name="name">Master of Arts</field>
+            <field name="type_id" ref="second"/>
         </record>
         <record id="msc" model="quickgrades.diploma">
             <field name="code">M.Sc</field>
             <field name="name">Master of Science</field>
+            <field name="type_id" ref="second"/>
         </record>
         <record id="phd" model="quickgrades.diploma">
             <field name="code">Phd</field>
             <field name="name">Doctor of Philosophy</field>
+            <field name="type_id" ref="doctorate"/>
         </record>
 
         <!-- Honour Scheme -->
-        <record id="first" model="quickgrades.honour">
+        <record id="first_class" model="quickgrades.honour">
             <field name="name">First Class</field>
             <field name="description">First Class Honours</field>
             <field name="upper_bound">5.0</field>
@@ -124,7 +151,7 @@
 
         <!--  Faculties  -->
          <record id="agriculture" model="quickgrades.faculty">
-            <field name="name">Faculty of Agiculture</field>
+            <field name="name">Faculty of Agriculture</field>
             <field name="code">Agriculture</field>
             <field name="school_id" ref="unizik"/>
         </record>
@@ -193,9 +220,6 @@
             <field name="code">Faculty of Social Sciences</field>
             <field name="school_id" ref="unizik"/>
         </record>
-
-        
-
 
         <!-- Departments for Engineering -->
         <record id="eee_dept" model="quickgrades.department">
@@ -747,17 +771,90 @@
             <field name="diploma_id" ref="bagric"/>
             <field name="faculty_id" ref="agriculture"/>
         </record>
+        <record id="ba_lig" model="quickgrades.programme">
+            <field name="department_id" ref="lig_dept"/>
+            <field name="diploma_id" ref="ba"/>
+            <field name="faculty_id" ref="arts"/>
+        </record>
 
 
+        <!-- Levels-->
+        <record id="year4" model="quickgrades.level">
+            <field name="name">Year 4</field>
+            <field name="code">Y4</field>
+            <field name="type_id" ref="first"/>
+        </record>
+        <record id="year3" model="quickgrades.level">
+            <field name="name">Year 3</field>
+            <field name="code">Y3</field>
+            <field name='next_class_id' ref='year4'/>
+            <field name="type_id" ref="first"/>
+        </record>
+        <record id="year2" model="quickgrades.level">
+            <field name="name">Year 2</field>
+            <field name="code">Y2</field>
+            <field name='next_class_id' ref='year3'/>
+            <field name="type_id" ref="first"/>
+        </record>
+        <record id="year1" model="quickgrades.level">
+            <field name="name">Year 1</field>
+            <field name="code">Y1</field>
+            <field name='next_class_id' ref='year2'/>
+            <field name="type_id" ref="first"/>
+        </record>
 
 
-        <!-- Student Informations -->
+        <!-- Student Information -->
         <record id="okonkwo_ukamaka_christina" model="quickgrades.student">
             <field name="name">Okonkwo Ukamaka Christiana</field>
             <field name="matriculation_number">NAU/2001/484557</field>
             <field name="application_number">7858484557</field>
             <field name="programme_id" ref="bagric_amb"/>
             <field name="school_id" ref="unizik"/>
+        </record>
+        <record id="okoro_john" model="quickgrades.student">
+            <field name="name">John Okoro</field>
+            <field name="matriculation_number">NAU/2004/087228</field>
+            <field name="application_number">7858787989</field>
+            <field name="programme_id" ref="ba_lig"/>
+            <field name="school_id" ref="unizik"/>
+        </record>
+
+        <record id="unizik_auto_job_scheduler" model="auto.job.scheduler">
+            <field name="name">Auto Job Scheduler</field>
+            <field name="description">Auto Job Scheduler</field>
+        </record>
+        <record forcecreate="True" id="ir_cron_import_course_scheduler_action" model="ir.cron">
+            <field name="name">Course Import: Process Course Import Queue Manager</field>
+            <field name="model_id" ref="model_auto_job_scheduler"/>
+            <field name="state">code</field>
+            <field name="code">model.process_course()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+        <record forcecreate="True" id="ir_cron_import_result_scheduler_action" model="ir.cron">
+            <field name="name">Result Import: Process Result Import Queue Manager</field>
+            <field name="model_id" ref="model_auto_job_scheduler"/>
+            <field name="state">code</field>
+            <field name="code">model.process_result()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">8</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+        <record model="ir.actions.server" id="server_action_academic_school_course">
+            <field name="name">Process Imports</field>
+            <field name="model_id" ref="quickgrades.model_academic_school_course"/>
+            <field name="binding_model_id" ref="quickgrades.model_academic_school_course" />
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                record.action_process()
+            </field>
         </record>
     </data>
 </odoo>

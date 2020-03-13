@@ -10,7 +10,7 @@
                 <tree>
                     <field name="name"/>
                     <field name="code"/>
-                    <field name="diploma_id"/>
+                    <field name="type_id"/>
                 </tree>
             </field>
         </record>
@@ -24,7 +24,7 @@
                         <group colspan="4">
                             <field name="name"/>
                             <field name="code"/>
-                            <field name="diploma_id"/>
+                            <field name="type_id"/>
                             <field name="next_class_id"/>
                         </group>
                     </sheet>

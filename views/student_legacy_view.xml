@@ -31,6 +31,8 @@
                             <field name="matric"/>
                             <field name="application_number"/>
                             <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
                             <field name="level"/>
                             <field name="dept"/>
                         </group>

@@ -26,6 +26,8 @@
                                 <field name="matriculation_number"/>
                                 <field name="application_number"/>
                                 <field name="name"/>
+                                <field name="phone"/>
+                                <field name="email"/>
                             </group>
                             <group col='2' string="...">
                                 <field name="image" widget="image" class="oe_left oe_avatar"/>

@@ -9,6 +9,7 @@
                     <field name="session"/>
                     <field name="course"/>
                     <field name="dept"/>
+                    <field name="level"/>
                     <field name="matric"/>
                     <field name="test"/>
                     <field name="exam"/>
@@ -33,6 +34,7 @@
                             <field name="session"/>
                             <field name="course"/>
                             <field name="dept"/>
+                            <field name="level"/>
                             <field name="matric"/>
                             <field name="practicals"/>
                             <field name="test"/>
