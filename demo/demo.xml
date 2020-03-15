@@ -754,6 +754,20 @@
             <field name="grading_scheme_id" ref="default_grading_system"/>
         </record>
 
+        <!-- Entry Status-->
+        <record id="cep" model="quickgrades.entry.status">
+            <field name="name">CEP</field>
+            <field name="code">CEP</field>
+        </record>
+        <record id="ume" model="quickgrades.entry.status">
+            <field name="name">UME</field>
+            <field name="code">UME</field>
+        </record>
+        <record id="pg" model="quickgrades.entry.status">
+            <field name="name">Post Graduate</field>
+            <field name="code">PG</field>
+        </record>
+
 
         <!-- Academic Programme-->
         <record id="beng_che" model="quickgrades.programme">
@@ -776,12 +790,34 @@
             <field name="diploma_id" ref="ba"/>
             <field name="faculty_id" ref="arts"/>
         </record>
+        <record id="bsc_acc_cep" model="quickgrades.programme">
+            <field name="department_id" ref="acc_dept"/>
+            <field name="diploma_id" ref="bsc"/>
+            <field name="entry_status_id" ref="cep"/>
+            <field name="faculty_id" ref="management"/>
+        </record>
+
+        
+
+
 
 
         <!-- Levels-->
+        <record id="year6" model="quickgrades.level">
+            <field name="name">Year 6</field>
+            <field name="code">Y6</field>
+            <field name="type_id" ref="first"/>
+        </record>
+        <record id="year5" model="quickgrades.level">
+            <field name="name">Year 5</field>
+            <field name="code">Y5</field>
+            <field name='next_class_id' ref='year6'/>
+            <field name="type_id" ref="first"/>
+        </record>
         <record id="year4" model="quickgrades.level">
             <field name="name">Year 4</field>
             <field name="code">Y4</field>
+            <field name='next_class_id' ref='year5'/>
             <field name="type_id" ref="first"/>
         </record>
         <record id="year3" model="quickgrades.level">
@@ -819,6 +855,14 @@
             <field name="programme_id" ref="ba_lig"/>
             <field name="school_id" ref="unizik"/>
         </record>
+         <record id="amaka_igwe" model="quickgrades.student">
+            <field name="name">Amaka Stella Igwe</field>
+            <field name="matriculation_number">NAU/2011/019228</field>
+            <field name="application_number">5658787989</field>
+            <field name="programme_id" ref="bsc_acc_cep"/>
+            <field name="school_id" ref="unizik"/>
+        </record>
+
 
         <record id="unizik_auto_job_scheduler" model="auto.job.scheduler">
             <field name="name">Auto Job Scheduler</field>

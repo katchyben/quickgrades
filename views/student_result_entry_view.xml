@@ -53,12 +53,23 @@
             </field>
         </record>
 
+        <!-- pivot view -->
+        <record id="unizik_student_result_entry_view_pivot" model="ir.ui.view">
+            <field name="name">Result</field>
+            <field name="model">student.result.entry</field>
+            <field name="arch" type="xml">
+            <pivot string="Result Analysis">
+                <field name="course_id" type="row" />
+            </pivot>
+          </field>
+       </record>
+
         <!-- actions opening views on models -->
 
         <record model="ir.actions.act_window" id="unizik_student_result_entry_action_window">
             <field name="name">Result Entries</field>
             <field name="res_model">student.result.entry</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
         </record>
 
     </data>

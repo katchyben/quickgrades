@@ -135,10 +135,10 @@
                   action="unizik_academic_grades_action_window"
                   parent="unizik_reference_data"/>
 
-        <!--menuitem name="Schools"
-                  id="unizik_polytechnics"
-                  action="unizik_academic_polyechnic_action_window"
-                  parent="unizik_reference_data"/-->
+        <menuitem name="Entry Statuses"
+                  id="unizik_entry_status"
+                  action="unizik_entry_status_action_window"
+                  parent="unizik_reference_data"/>
 
         <menuitem name="Semesters"
                   id="unizik_academic_semesters"

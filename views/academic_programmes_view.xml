@@ -11,6 +11,7 @@
                     <field name="name"/>
                     <field name="department_id"/>
                     <field name="faculty_id"/>
+                    <field name="entry_status_id"/>
                     <field name="course_ids"/>
                 </tree>
             </field>
@@ -26,16 +27,17 @@
                             <field name="faculty_id"/>
                             <field name="department_id"/>
                             <field name="diploma_id"/>
+                            <field name="entry_status_id"/>
                         </group>
                         <notebook>
                             <page name="public" string="Courses">
                                 <group>
                                     <field name="course_ids" nolabel="1">
                                         <tree editable="bottom">
-                                            <field name="code"/>
-                                            <field name="name"/>
                                             <field name="level_id"/>
                                             <field name='semester_id'/>
+                                            <field name="code"/>
+                                            <field name="name"/>
                                             <field name="units"/>
                                         </tree>
                                     </field>

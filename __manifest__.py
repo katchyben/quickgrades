@@ -32,6 +32,7 @@
         'views/student_legacy_view.xml',
         'views/student_legacy_result_view.xml',
         'views/academic_years_view.xml',
+        'views/entry_status_view.xml',
         'views/menu.xml'
     ],
     'demo': [

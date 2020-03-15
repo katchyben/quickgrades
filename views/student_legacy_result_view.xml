@@ -15,6 +15,7 @@
                     <field name="exam"/>
                     <field name="total"/>
                     <field name="status"/>
+                    <field name="remarks"/>
                 </tree>
             </field>
         </record>

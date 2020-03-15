@@ -11,6 +11,7 @@
                     <field name="name"/>
                     <field name="programme_id"/>
                     <field name="department_id"/>
+                    <field name="entry_status_id"/>
                 </tree>
             </field>
         </record>
@@ -28,6 +29,7 @@
                                 <field name="name"/>
                                 <field name="phone"/>
                                 <field name="email"/>
+                                 <field name="entry_status_id"/>
                             </group>
                             <group col='2' string="...">
                                 <field name="image" widget="image" class="oe_left oe_avatar"/>

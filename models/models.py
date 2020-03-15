@@ -18,6 +18,16 @@ class Semester(models.Model):
     sequence = fields.Integer('Sequence', required=True)
     name = fields.Char('Name', size=64, required=True, index=1, help='Name')
     code = fields.Char('Code', required=True, index=1, help='Code')
+    
+    
+class EntryStatus(models.Model):
+    """ Defining an academic year """
+    _name = "quickgrades.entry.status"
+    _description = "Entry Status"
+    _order = "name asc"
+
+    name = fields.Char('Name', size=64, required=True)
+    code = fields.Char('Code', required=True)
 
 
 class Department(models.Model):
@@ -38,6 +48,10 @@ class Programme(models.Model):
     _name = "quickgrades.programme"
     _description = "Academic Programme"
     _order = 'department_id asc'
+    
+    @api.model
+    def _get_default_status(self):
+        return self.env['quickgrades.entry.status'].search([('name', '=', 'UME')], limit=1)
 
     name = fields.Char(compute='_compute_name', string="Name", store=True)
     department_id = fields.Many2one('quickgrades.department', 'Department', required=True)
@@ -45,11 +59,16 @@ class Programme(models.Model):
     diploma_id = fields.Many2one('quickgrades.diploma', 'Degree', required=True)
     course_ids = fields.One2many('programme.course.entry', 'programme_id', 'Courses')
     school_id = fields.Many2one(related='faculty_id.school_id', readonly=True, store=True)
-
+    entry_status_id = fields.Many2one('quickgrades.entry.status', 'Entry Status', default=_get_default_status)
+   
     @api.depends('department_id', 'diploma_id')
     def _compute_name(self):
         for record in self:
-            record.name = "{0} {1}".format(record.diploma_id.code, record.department_id.name)
+            if record.entry_status_id and record.entry_status_id.code == "CEP":
+                record.name = "{0} {1} {2}".format(record.diploma_id.code, 
+                                                   record.department_id.name, record.entry_status_id.code )
+            else:
+                record.name = "{0} {1}".format(record.diploma_id.code, record.department_id.name)
 
 
 class Faculty(models.Model):
@@ -132,6 +151,8 @@ class Student(models.Model):
     programme_id = fields.Many2one('quickgrades.programme', "Programme", required=True)
     department_id = fields.Many2one(related='programme_id.department_id', store=True, readonly=True,
                                     string="Department")
+    entry_status_id = fields.Many2one(related='programme_id.entry_status_id', store=True, readonly=True,
+                                    string="Entry Status")
     diploma_id = fields.Many2one(related='programme_id.diploma_id', string="Degree", store=True, readonly=True)
     school_id = fields.Many2one('quickgrades.school', 'School')
     result_book_ids = fields.One2many('student.result', 'student_id', 'Result Book', readonly=True)
@@ -465,7 +486,7 @@ class StudentRegistration(models.Model):
     semester_id = fields.Many2one('quickgrades.semester', 'Semester', required=True)
     programme_id = fields.Many2one('quickgrades.programme', string="Programme", required=True)
     diploma_id = fields.Many2one(related='programme_id.diploma_id', string="Diploma", store=True, readonly=True)
-    total_credit_units = fields.Float()
+    total_credit_units = fields.Float(compute='_compute_total_credit_units', store="true")
     state = fields.Selection(string="Status",
                              selection=[
                                  ('New', 'New'),
@@ -504,7 +525,7 @@ class StudentRegistration(models.Model):
         gpa = self.env['quickgrades.honour'].compute_gpa(results)
         self.write({'state': 'Closed', 'gpa': gpa})
 
-    @api.depends('entry_ids')
+    @api.depends('result_ids')
     def _compute_results(self):
         for record in self:
             if record.entry_ids:
@@ -512,6 +533,12 @@ class StudentRegistration(models.Model):
                                                                    ("student_id", "=", record.student_id.id),
                                                                    ("semester_id", "=", record.semester_id.id)])
                 record.result_ids = results
+    
+    @api.depends('entry_ids')         
+    def _compute_total_credit_units(self):
+         for record in self:
+                if record.entry_ids:
+                    record.total_credit_units = sum([entry.units for entry in record.entry_ids])
 
     def name_get(self):
         result = []
@@ -679,7 +706,7 @@ class StudentResultBookEntry(models.Model):
     course_code = fields.Char(related="course_id.code", string='Course Code', readonly=True, store=True)
     units = fields.Integer(related='course_id.units', string='Units', readonly=True, store=True)
     remarks = fields.Text('Remarks', track_visibility="all")
-    gpa = fields.Float("GPA")
+    gpa = fields.Float("GPA", compute='_compute_gpa',  store="true")
     ca_score = fields.Float('Examination Score', track_visibility="onchange")
     test_score = fields.Float('Test Score', track_visibility="onchange")
     points = fields.Float(related="grade_id.point", string='Points', readonly=True, store=True)
@@ -775,8 +802,14 @@ class StudentResultBookEntry(models.Model):
         for record in self:
             total_score = record.ca_score + record.practicals_score + record.test_score
             record.score = total_score
-
-
+            
+    @api.depends('registration_id.entry_ids')
+    def _compute_gpa(self):
+        for record in self:
+            if record.registration_id and record.registration_id.entry_ids:
+                record.gpa = record.points_obtained/record.registration_id.total_credit_units
+  
+            
 class State(models.Model):
     _description = "State"
     _name = 'academic.state'
@@ -1070,6 +1103,8 @@ class SchoolCourse(models.Model):
         default='New',
         readonly=True
     )
+    remarks = fields.Char('Remarks')
+
 
     def partition(self, data):
         if " " in data:
