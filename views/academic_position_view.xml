@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="unizik_quickgrades_position_tree">
+      <field name="name">Position</field>
+      <field name="model">quickgrades.position</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="department_id"/>
+        </tree>
+      </field>
+    </record>
+
+  <record id="unizik_quickgrades_position_form" model="ir.ui.view">
+     <field name="name">Positions</field>
+     <field name="model">quickgrades.position</field>
+     <field name="arch" type="xml">
+        <form string="Position" delete="false" duplicate="0">
+            <sheet>
+                 <group colspan="4">
+                      <field name="name"/>
+                      <field name="description"/>
+                      <field name="department_id"/>
+                </group>
+            </sheet>
+        </form>
+     </field>
+ </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="unizik_quickgrades_positions_action_window">
+      <field name="name">Positions</field>
+      <field name="res_model">quickgrades.position</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>
+
+
+
+
+
+

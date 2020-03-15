@@ -42,6 +42,7 @@ class Department(models.Model):
     diploma_ids = fields.Many2many(comodel_name='quickgrades.diploma', string='Degrees')
     student_ids = fields.One2many('quickgrades.student', 'department_id', 'Student', readonly=True)
     programme_ids = fields.One2many('quickgrades.programme', 'department_id', 'Programmes', readonly=True)
+    position_ids = fields.One2many('quickgrades.position', 'department_id', 'Positions')
 
 
 class Programme(models.Model):
@@ -310,6 +311,7 @@ class ProgrammeCourse(models.Model):
     semester_id = fields.Many2one('quickgrades.semester', 'Semester', required=True)
     diploma_id = fields.Many2one('quickgrades.diploma', 'Degree', required=True)
     entry_ids = fields.One2many('programme.course.entry', 'course_id', 'Programmes')
+    lecturer_ids = fields.Many2many(comodel_name='quickgrades.lecturer', string='Lecturers')
 
     def name_get(self):
         result = []
@@ -486,7 +488,7 @@ class StudentRegistration(models.Model):
     semester_id = fields.Many2one('quickgrades.semester', 'Semester', required=True)
     programme_id = fields.Many2one('quickgrades.programme', string="Programme", required=True)
     diploma_id = fields.Many2one(related='programme_id.diploma_id', string="Diploma", store=True, readonly=True)
-    total_credit_units = fields.Float(compute='_compute_total_credit_units', store="true")
+    total_credit_units = fields.Float(compute='_compute_total_credit_units', store=True)
     state = fields.Selection(string="Status",
                              selection=[
                                  ('New', 'New'),
@@ -706,7 +708,7 @@ class StudentResultBookEntry(models.Model):
     course_code = fields.Char(related="course_id.code", string='Course Code', readonly=True, store=True)
     units = fields.Integer(related='course_id.units', string='Units', readonly=True, store=True)
     remarks = fields.Text('Remarks', track_visibility="all")
-    gpa = fields.Float("GPA", compute='_compute_gpa',  store="true")
+    gpa = fields.Float("GPA", compute='_compute_gpa',  store=True)
     ca_score = fields.Float('Examination Score', track_visibility="onchange")
     test_score = fields.Float('Test Score', track_visibility="onchange")
     points = fields.Float(related="grade_id.point", string='Points', readonly=True, store=True)
@@ -1010,6 +1012,8 @@ class LegacyStudent(models.Model):
         default='New',
         readonly=True
     )
+    remarks = fields.Char('Remarks')
+
 
     # NAU/2001/484557
     def _get_admission_year(self):
@@ -1250,3 +1254,110 @@ class AutoJobScheduler(models.Model):
             for course in failed_records:
                 _logger.info(" Processing Failed ****** {} ******".format(course.code))
                 course.action_process()
+                
+
+class Credentials(models.Model):
+    """ Credentials """
+    _name = "quickgrades.credentials"
+    _description = " Credentials"
+
+    lecturer_id = fields.Many2one('quickgrades.lecturer', 'Lecturer', required=True)
+    institution = fields.Char('Institution', required=True, size=250)
+    discipline = fields.Char('Discipline', required=True, size=250)
+    remarks = fields.Text('Remarks')
+    diploma_id = fields.Many2one('quickgrades.diploma', 'Diploma', required=True)
+    honour_id = fields.Many2one('quickgrades.honour', 'Honour')
+    exam_year = fields.Char(required=True, string='Year')
+    
+    def name_get(self):
+        result = []
+        for record in self:
+            name = "{0} {1} ".format(record.diploma_id.code, record.discipline)
+            result.append((record.id, name))
+        return result
+    
+    
+class Position(models.Model):
+    """Position"""
+    _name = "quickgrades.position"
+    _description = "Position"
+
+    name = fields.Char('Name', required=True)
+    description = fields.Text('Description')
+    department_id = fields.Many2one('quickgrades.department')
+   
+
+class Lecturer(models.Model):
+    """ Defining Academic Staff"""
+    _name = "quickgrades.lecturer"
+    _description = "Academic Staff"
+    _order = "name asc"
+
+    name = fields.Char('Name', required=True)
+    surname = fields.Char('Surname', required=True)
+    full_name = fields.Char(compute='_compute_full_name', string="Full Name", store=True)
+    phone_number = fields.Char('Phone #', required=True)
+    middle_name = fields.Char(string='Middle Name', required=False)
+    marital_status = fields.Selection(
+        selection=[('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced')],
+        required=False,
+        string='Marital Status')
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], required=True, string='Sex')
+    address = fields.Text(string='Address', required=False)
+    email = fields.Char('Email Address')
+    title = fields.Selection(string="Title",
+                             selection=[
+                                 ('Mr', 'Mr'),
+                                 ('Mrs', 'Mrs'),
+                                 ('Dr', 'Dr'),
+                                 ('Engr', 'Engr'),
+                                 ('Prof', 'Prof')])
+    
+    department_id = fields.Many2one('quickgrades.department', 'Department', required=True)
+    credential_ids = fields.One2many('quickgrades.credentials', 'lecturer_id', string='Credentials')
+    course_ids = fields.Many2many(comodel_name='programme.course', string='Courses')
+    faculty_id = fields.Many2one(related='department_id.faculty_id', string='Faculty', readonly=True, store=True)
+    employment_date = fields.Date('Employment Date', required=False)
+    title = fields.Selection(
+        string='Title',
+        required=False,
+        selection=[('Dr', 'Dr'), ('Engr', 'Engr'), ('Mr', 'Mr'), ('Mrs', 'Mrs'), ('Miss', 'Miss')],
+    )
+    department_id = fields.Many2one(
+        comodel_name='staff.department', string='Department')
+    middle_name = fields.Char(string='Middle Name', required=False)
+    marital_status = fields.Selection(
+        selection=[('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced')],
+        required=False,
+        string='Marital Status')
+    position_id = fields.Many2one('quickgrades.academic.position', 'Position', required=False)
+    image = fields.Binary(
+        "Photograph", attachment=True,
+        help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
+    image_medium = fields.Binary(
+        "Medium-sized photo", attachment=True,
+        help="Medium-sized photo of the employee. It is automatically "
+             "resized as a 128x128px image, with aspect ratio preserved. "
+             "Use this field in form views or some kanban views.")
+    image_small = fields.Binary(
+        "Small-sized photo", attachment=True,
+        help="Small-sized photo of the employee. It is automatically "
+             "resized as a 64x64px image, with aspect ratio preserved. "
+             "Use this field anywhere a small image is required.")
+    
+    @api.depends('name', 'surname', 'title')
+    def _compute_full_name(self):
+        for record in self:
+            if record.title:
+                record.full_name = "{0} {1} {2}".format(record.title, record.name, record.surname)
+            else:
+                record.full_name = "{0} {1}".format(record.name, record.surname)
+
+    
+    def name_get(self):
+        result = []
+        for record in self:
+            name = "{0}".format(record.full_name)
+            result.append((record.id, name))
+        return result
+

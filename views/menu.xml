@@ -93,6 +93,13 @@
                   action="unizik_students_action_window"
                   parent="unizik_menu_students"/>
 
+        <menuitem name="Academic Staff"
+                  id="unizik_menu_all_lecturers"
+                  sequence='1'
+                  action="quickgrades_lecturer_action_window"
+                  parent="unizik_menu_students"/>
+
+
 
         <!-- Result Management  -->
         <menuitem name="Result Entries"
@@ -127,6 +134,8 @@
                   sequence='3'
                   action="unizik_academic_school_course_action_window"
                   parent="unizik_etl"/>
+
+        
 
 
         <!-- Master Data -->

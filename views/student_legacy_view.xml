@@ -11,6 +11,7 @@
                     <field name="name"/>
                     <field name="level"/>
                     <field name="dept"/>
+                    <field name="remarks"/>
                     <field name="status"/>
                 </tree>
             </field>
@@ -35,6 +36,7 @@
                             <field name="email"/>
                             <field name="level"/>
                             <field name="dept"/>
+                            <field name="remarks"/>
                         </group>
                     </sheet>
                 </form>

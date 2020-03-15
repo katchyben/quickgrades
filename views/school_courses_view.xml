@@ -14,6 +14,7 @@
                     <field name="units"/>
                     <field name="option"/>
                     <field name="status"/>
+                    <field name="remarks"/>
                 </tree>
             </field>
         </record>
@@ -38,6 +39,8 @@
                             <field name="units"/>
                             <field name="option"/>
                             <field name="status"/>
+                            <field name="remarks"/>
+
                         </group>
                     </sheet>
                 </form>

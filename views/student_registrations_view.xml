@@ -87,10 +87,11 @@
                                             <field name="level_id"/>
                                             <field name='semester_id'/>
                                             <field name="course_id"/>
-                                            <field name="units"/>
+                                            <field name="units" sum="Total Units"/>
                                             <field name='score'/>
-                                            <field name="points_obtained" sum="Total Points"/>
                                             <field name="grade_id"/>
+                                            <field name="points_obtained" sum="Total Points"/>
+                                            <field name="gpa" sum="Semester GPA"/>
                                             <field name="is_pass_mark" invisible='1'/>
                                             <field name="status" invisible='1'/>
                                         </tree>
